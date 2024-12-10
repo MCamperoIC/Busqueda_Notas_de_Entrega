@@ -72,7 +72,7 @@
       },
       {
         "name": "008c185d-80db-480d-bad8-647d42ef70fd",
-        "fromColumn": "ERDAT",
+        "fromColumn": "Fecha Creacion",
         "fromTable": "LIKP_ENTREGAS",
         "joinOnDateBehavior": "datePartOnly",
         "toColumn": "Date",
@@ -374,23 +374,23 @@
             "mode": "import",
             "source": {
               "expression": [
-                "let\r",
-                "    Source = SapHana.Database(\"172.28.134.165:30215\", [Implementation=\"2.0\"]),\r",
-                "    Contents = Source{[Name=\"Contents\"]}[Data],\r",
-                "    Reportes = Contents{[Name=\"Reportes\"]}[Data],\r",
-                "    FACTURAS_CONTABLES1 = Reportes{[Name=\"FACTURAS_CONTABLES\"]}[Data],\r",
-                "    #\"Added Items\" = Cube.Transform(FACTURAS_CONTABLES1,\r",
-                "        {\r",
-                "            {Cube.AddAndExpandDimensionColumn, \"[FACTURAS_CONTABLES]\", {\"[AEDAT].[AEDAT].Attribute\", \"[BLART].[BLART].Attribute\", \"[BLDAT].[BLDAT].Attribute\", \"[BUDAT].[BUDAT].Attribute\", \"[BUPLA].[BUPLA].Attribute\", \"[BELNR].[BELNR].Attribute\", \"[GJAHR].[GJAHR].Attribute\", \"[KUNNR].[KUNNR].Attribute\", \"[Name].[Name].Attribute\", \"[NIT_Dest_Factura].[NIT_Dest_Factura].Attribute\", \"[Nombre_Dest_factura].[Nombre_Dest_factura].Attribute\", \"[BUKRS].[BUKRS].Attribute\", \"[BUZEI].[BUZEI].Attribute\", \"[SGTXT].[SGTXT].Attribute\", \"[VBELN].[VBELN].Attribute\", \"[XBLNR].[XBLNR].Attribute\"}, {\"AEDAT\", \"BLART\", \"BLDAT\", \"BUDAT\", \"BUPLA\", \"Documento Contable\", \"Gestion\", \"KUNNR\", \"Name\", \"NIT_Dest_Factura\", \"Nombre_Dest_factura\", \"Organizacion\", \"Posicion\", \"SGTXT\", \"VBELN\", \"XBLNR\"}},\r",
-                "            {Cube.AddMeasureColumn, \"FDWBT\", \"[Measures].[FDWBT]\"}\r",
-                "        }),\r",
-                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Added Items\",{{\"BLDAT\", type date}, {\"BUDAT\", type date}, {\"AEDAT\", type date}}),\r",
-                "    #\"Removed Columns\" = Table.RemoveColumns(#\"Changed Type\",{\"AEDAT\"}),\r",
-                "    #\"Filtered Rows\" = Table.SelectRows(#\"Removed Columns\", each ([Organizacion] = \"1000\")),\r",
-                "    #\"Renamed Columns\" = Table.RenameColumns(#\"Filtered Rows\",{{\"XBLNR\", \"Factura Fiscal\"}}),\r",
-                "    #\"Inserted Merged Column\" = Table.AddColumn(#\"Renamed Columns\", \"ID Factura Contable\", each Text.Combine({[Gestion], [Documento Contable]}), type text),\r",
-                "    #\"Renamed Columns1\" = Table.RenameColumns(#\"Inserted Merged Column\",{{\"ID Factura Contable\", \"ID Factura FI\"}})\r",
-                "in\r",
+                "let",
+                "    Source = SapHana.Database(\"172.28.134.165:30215\", [Implementation=\"2.0\"]),",
+                "    Contents = Source{[Name=\"Contents\"]}[Data],",
+                "    Reportes = Contents{[Name=\"Reportes\"]}[Data],",
+                "    FACTURAS_CONTABLES1 = Reportes{[Name=\"FACTURAS_CONTABLES\"]}[Data],",
+                "    #\"Added Items\" = Cube.Transform(FACTURAS_CONTABLES1,",
+                "        {",
+                "            {Cube.AddAndExpandDimensionColumn, \"[FACTURAS_CONTABLES]\", {\"[AEDAT].[AEDAT].Attribute\", \"[BLART].[BLART].Attribute\", \"[BLDAT].[BLDAT].Attribute\", \"[BUDAT].[BUDAT].Attribute\", \"[BUPLA].[BUPLA].Attribute\", \"[BELNR].[BELNR].Attribute\", \"[GJAHR].[GJAHR].Attribute\", \"[KUNNR].[KUNNR].Attribute\", \"[Name].[Name].Attribute\", \"[NIT_Dest_Factura].[NIT_Dest_Factura].Attribute\", \"[Nombre_Dest_factura].[Nombre_Dest_factura].Attribute\", \"[BUKRS].[BUKRS].Attribute\", \"[BUZEI].[BUZEI].Attribute\", \"[SGTXT].[SGTXT].Attribute\", \"[VBELN].[VBELN].Attribute\", \"[XBLNR].[XBLNR].Attribute\"}, {\"AEDAT\", \"BLART\", \"BLDAT\", \"BUDAT\", \"BUPLA\", \"Documento Contable\", \"Gestion\", \"KUNNR\", \"Name\", \"NIT_Dest_Factura\", \"Nombre_Dest_factura\", \"Organizacion\", \"Posicion\", \"SGTXT\", \"VBELN\", \"XBLNR\"}},",
+                "            {Cube.AddMeasureColumn, \"FDWBT\", \"[Measures].[FDWBT]\"}",
+                "        }),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Added Items\",{{\"BLDAT\", type date}, {\"BUDAT\", type date}, {\"AEDAT\", type date}}),",
+                "    #\"Removed Columns\" = Table.RemoveColumns(#\"Changed Type\",{\"AEDAT\"}),",
+                "    #\"Filtered Rows\" = Table.SelectRows(#\"Removed Columns\", each ([Organizacion] = \"1000\")),",
+                "    #\"Renamed Columns\" = Table.RenameColumns(#\"Filtered Rows\",{{\"XBLNR\", \"Factura Fiscal\"}}),",
+                "    #\"Inserted Merged Column\" = Table.AddColumn(#\"Renamed Columns\", \"ID Factura Contable\", each Text.Combine({[Gestion], [Documento Contable]}), type text),",
+                "    #\"Renamed Columns1\" = Table.RenameColumns(#\"Inserted Merged Column\",{{\"ID Factura Contable\", \"ID Factura FI\"}})",
+                "in",
                 "    #\"Renamed Columns1\""
               ],
               "type": "m"
@@ -523,7 +523,7 @@
             "summarizeBy": "none"
           },
           {
-            "name": "WERKS",
+            "name": "Centro",
             "annotations": [
               {
                 "name": "SummarizationSetBy",
@@ -532,7 +532,7 @@
             ],
             "dataType": "string",
             "lineageTag": "bffef7a8-775a-46d8-9083-b2b38ded3897",
-            "sourceColumn": "WERKS",
+            "sourceColumn": "Centro",
             "summarizeBy": "none"
           },
           {
@@ -553,7 +553,7 @@
             "summarizeBy": "sum"
           },
           {
-            "name": "AUBEL",
+            "name": "Pedido",
             "annotations": [
               {
                 "name": "SummarizationSetBy",
@@ -562,11 +562,11 @@
             ],
             "dataType": "string",
             "lineageTag": "03b54b64-fd61-4efe-8618-d96cf89b1e71",
-            "sourceColumn": "AUBEL",
+            "sourceColumn": "Pedido",
             "summarizeBy": "none"
           },
           {
-            "name": "AUPOS",
+            "name": "Pedido Posicion",
             "annotations": [
               {
                 "name": "SummarizationSetBy",
@@ -575,7 +575,7 @@
             ],
             "dataType": "string",
             "lineageTag": "a3b45baf-6393-4438-a93d-0f930f8d240f",
-            "sourceColumn": "AUPOS",
+            "sourceColumn": "Pedido Posicion",
             "summarizeBy": "none"
           },
           {
@@ -690,24 +690,25 @@
             "mode": "import",
             "source": {
               "expression": [
-                "let\r",
-                "    Source = SapHana.Database(\"172.28.134.165:30215\", [Implementation=\"2.0\"]),\r",
-                "    Contents = Source{[Name=\"Contents\"]}[Data],\r",
-                "    Reportes = Contents{[Name=\"Reportes\"]}[Data],\r",
-                "    VBRKP_FILTRADO1 = Reportes{[Name=\"VBRKP_FILTRADO\"]}[Data],\r",
-                "    #\"Added Items\" = Cube.Transform(VBRKP_FILTRADO1,\r",
-                "        {\r",
-                "            {Cube.AddAndExpandDimensionColumn, \"[VBRKP_FILTRADO]\", {\"[AUBEL].[AUBEL].Attribute\", \"[AUPOS].[AUPOS].Attribute\", \"[MATNR].[MATNR].Attribute\", \"[PERNR].[PERNR].Attribute\", \"[ZTERM].[ZTERM].Attribute\", \"[BELNR].[BELNR].Attribute\", \"[VBELN].[VBELN].Attribute\", \"[FKDAT].[FKDAT].Attribute\", \"[GJAHR].[GJAHR].Attribute\", \"[VKBUR].[VKBUR].Attribute\", \"[VKORG].[VKORG].Attribute\", \"[POSNR].[POSNR].Attribute\", \"[KUNAG].[KUNAG].Attribute\", \"[Full_Name].[Full_Name].Attribute\", \"[WERKS].[WERKS].Attribute\"}, {\"AUBEL\", \"AUPOS\", \"Codigo Item\", \"Codigo Vendedor\", \"Condicion de Pago\", \"Documento Contable\", \"Documento Venta\", \"Fecha\", \"Gestion\", \"Oficina de Ventas\", \"Organizacion\", \"Posicion\", \"Solicitante\", \"Vendedor\", \"WERKS\"}},\r",
-                "            {Cube.AddMeasureColumn, \"Monto en BOB\", \"[Measures].[Valor_Neto]\"}\r",
-                "        }),\r",
-                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Added Items\",{{\"Fecha\", type date}}),\r",
-                "    #\"Renamed Columns\" = Table.RenameColumns(#\"Changed Type\",{{\"Fecha\", \"Fecha Venta\"}}),\r",
-                "    #\"Inserted Merged Column\" = Table.AddColumn(#\"Renamed Columns\", \"ID Factura Logistica\", each Text.Combine({[Documento Venta], [Posicion]}), type text),\r",
-                "    #\"Inserted Merged Column1\" = Table.AddColumn(#\"Inserted Merged Column\", \"ID Factura FI Referencia\", each Text.Combine({[Gestion], [Documento Contable]}), type text),\r",
-                "    #\"Inserted Merged Column2\" = Table.AddColumn(#\"Inserted Merged Column1\", \"ID Pedido Referencia\", each Text.Combine({[AUBEL], [AUPOS]}), type text),\r",
-                "    #\"Filtered Rows\" = Table.SelectRows(#\"Inserted Merged Column2\", each ([Organizacion] = \"1000\"))\r",
-                "in\r",
-                "    #\"Filtered Rows\""
+                "let",
+                "    Source = SapHana.Database(\"172.28.134.165:30215\", [Implementation=\"2.0\"]),",
+                "    Contents = Source{[Name=\"Contents\"]}[Data],",
+                "    Reportes = Contents{[Name=\"Reportes\"]}[Data],",
+                "    VBRKP_FILTRADO1 = Reportes{[Name=\"VBRKP_FILTRADO\"]}[Data],",
+                "    #\"Added Items\" = Cube.Transform(VBRKP_FILTRADO1,",
+                "        {",
+                "            {Cube.AddAndExpandDimensionColumn, \"[VBRKP_FILTRADO]\", {\"[AUBEL].[AUBEL].Attribute\", \"[AUPOS].[AUPOS].Attribute\", \"[MATNR].[MATNR].Attribute\", \"[PERNR].[PERNR].Attribute\", \"[ZTERM].[ZTERM].Attribute\", \"[BELNR].[BELNR].Attribute\", \"[VBELN].[VBELN].Attribute\", \"[FKDAT].[FKDAT].Attribute\", \"[GJAHR].[GJAHR].Attribute\", \"[VKBUR].[VKBUR].Attribute\", \"[VKORG].[VKORG].Attribute\", \"[POSNR].[POSNR].Attribute\", \"[KUNAG].[KUNAG].Attribute\", \"[Full_Name].[Full_Name].Attribute\", \"[WERKS].[WERKS].Attribute\"}, {\"AUBEL\", \"AUPOS\", \"Codigo Item\", \"Codigo Vendedor\", \"Condicion de Pago\", \"Documento Contable\", \"Documento Venta\", \"Fecha\", \"Gestion\", \"Oficina de Ventas\", \"Organizacion\", \"Posicion\", \"Solicitante\", \"Vendedor\", \"WERKS\"}},",
+                "            {Cube.AddMeasureColumn, \"Monto en BOB\", \"[Measures].[Valor_Neto]\"}",
+                "        }),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Added Items\",{{\"Fecha\", type date}}),",
+                "    #\"Renamed Columns\" = Table.RenameColumns(#\"Changed Type\",{{\"Fecha\", \"Fecha Venta\"}}),",
+                "    #\"Inserted Merged Column\" = Table.AddColumn(#\"Renamed Columns\", \"ID Factura Logistica\", each Text.Combine({[Documento Venta], [Posicion]}), type text),",
+                "    #\"Inserted Merged Column1\" = Table.AddColumn(#\"Inserted Merged Column\", \"ID Factura FI Referencia\", each Text.Combine({[Gestion], [Documento Contable]}), type text),",
+                "    #\"Inserted Merged Column2\" = Table.AddColumn(#\"Inserted Merged Column1\", \"ID Pedido Referencia\", each Text.Combine({[AUBEL], [AUPOS]}), type text),",
+                "    #\"Filtered Rows\" = Table.SelectRows(#\"Inserted Merged Column2\", each ([Organizacion] = \"1000\")),",
+                "    #\"Renamed Columns1\" = Table.RenameColumns(#\"Filtered Rows\",{{\"AUBEL\", \"Pedido\"}, {\"AUPOS\", \"Pedido Posicion\"}, {\"WERKS\", \"Centro\"}})",
+                "in",
+                "    #\"Renamed Columns1\""
               ],
               "type": "m"
             }
@@ -1556,7 +1557,7 @@
         ],
         "columns": [
           {
-            "name": "VBELN",
+            "name": "Num Entrega",
             "annotations": [
               {
                 "name": "SummarizationSetBy",
@@ -1565,11 +1566,11 @@
             ],
             "dataType": "string",
             "lineageTag": "341694d3-a23d-4b64-a37b-d75ab94b8b60",
-            "sourceColumn": "VBELN",
+            "sourceColumn": "Num Entrega",
             "summarizeBy": "none"
           },
           {
-            "name": "POSNR",
+            "name": "Pos Entrega",
             "annotations": [
               {
                 "name": "SummarizationSetBy",
@@ -1578,7 +1579,7 @@
             ],
             "dataType": "string",
             "lineageTag": "6dd36fc8-b8dc-4c13-a74b-2af3e6245d3e",
-            "sourceColumn": "POSNR",
+            "sourceColumn": "Pos Entrega",
             "summarizeBy": "none"
           },
           {
@@ -1595,7 +1596,7 @@
             "summarizeBy": "none"
           },
           {
-            "name": "ERDAT",
+            "name": "Fecha Creacion",
             "annotations": [
               {
                 "name": "SummarizationSetBy",
@@ -1609,7 +1610,7 @@
             "dataType": "dateTime",
             "formatString": "Long Date",
             "lineageTag": "9e6a4b58-1723-4b1f-9974-9f62a7630f0d",
-            "sourceColumn": "ERDAT",
+            "sourceColumn": "Fecha Creacion",
             "summarizeBy": "none",
             "variations": [
               {
@@ -1624,7 +1625,7 @@
             ]
           },
           {
-            "name": "VSTEL",
+            "name": "Oficina de Venta",
             "annotations": [
               {
                 "name": "SummarizationSetBy",
@@ -1633,11 +1634,11 @@
             ],
             "dataType": "string",
             "lineageTag": "3c7d9a53-ec5a-4157-b096-c5e7cf38913d",
-            "sourceColumn": "VSTEL",
+            "sourceColumn": "Oficina de Venta",
             "summarizeBy": "none"
           },
           {
-            "name": "WERKS",
+            "name": "Centro",
             "annotations": [
               {
                 "name": "SummarizationSetBy",
@@ -1646,11 +1647,11 @@
             ],
             "dataType": "string",
             "lineageTag": "77282c07-2cab-4465-9440-18685ee6a357",
-            "sourceColumn": "WERKS",
+            "sourceColumn": "Centro",
             "summarizeBy": "none"
           },
           {
-            "name": "MATNR",
+            "name": "Codigo Item",
             "annotations": [
               {
                 "name": "SummarizationSetBy",
@@ -1659,11 +1660,11 @@
             ],
             "dataType": "string",
             "lineageTag": "e3558ecd-766a-4d39-b52e-0947b8aad4df",
-            "sourceColumn": "MATNR",
+            "sourceColumn": "Codigo Item",
             "summarizeBy": "none"
           },
           {
-            "name": "MATKL",
+            "name": "Codigo Grupo",
             "annotations": [
               {
                 "name": "SummarizationSetBy",
@@ -1672,11 +1673,11 @@
             ],
             "dataType": "string",
             "lineageTag": "9b95c15e-4537-4a56-af0b-409fe13af864",
-            "sourceColumn": "MATKL",
+            "sourceColumn": "Codigo Grupo",
             "summarizeBy": "none"
           },
           {
-            "name": "VGBEL",
+            "name": "Pedido Referencia",
             "annotations": [
               {
                 "name": "SummarizationSetBy",
@@ -1685,11 +1686,11 @@
             ],
             "dataType": "string",
             "lineageTag": "c17b3d3b-3fed-46f1-8983-062bd2e7c725",
-            "sourceColumn": "VGBEL",
+            "sourceColumn": "Pedido Referencia",
             "summarizeBy": "none"
           },
           {
-            "name": "VGPOS",
+            "name": "Pedido Posicion",
             "annotations": [
               {
                 "name": "SummarizationSetBy",
@@ -1698,11 +1699,11 @@
             ],
             "dataType": "string",
             "lineageTag": "24e3344b-749d-4234-bc63-99af807c3150",
-            "sourceColumn": "VGPOS",
+            "sourceColumn": "Pedido Posicion",
             "summarizeBy": "none"
           },
           {
-            "name": "LFIMG",
+            "name": "Cantidad Entregada",
             "annotations": [
               {
                 "name": "SummarizationSetBy",
@@ -1715,7 +1716,7 @@
             ],
             "dataType": "double",
             "lineageTag": "9cf5e64b-e776-4fc4-832d-3c152a30a64e",
-            "sourceColumn": "LFIMG",
+            "sourceColumn": "Cantidad Entregada",
             "summarizeBy": "sum"
           },
           {
@@ -1745,7 +1746,7 @@
             "summarizeBy": "none"
           },
           {
-            "name": "VKORG",
+            "name": "Organizacion",
             "annotations": [
               {
                 "name": "SummarizationSetBy",
@@ -1754,7 +1755,7 @@
             ],
             "dataType": "string",
             "lineageTag": "74eff032-e1fb-45f1-8f6f-43c54057607b",
-            "sourceColumn": "VKORG",
+            "sourceColumn": "Organizacion",
             "summarizeBy": "none"
           }
         ],
@@ -1765,23 +1766,24 @@
             "mode": "import",
             "source": {
               "expression": [
-                "let\r",
-                "    Source = SapHana.Database(\"172.28.134.165:30215\", [Implementation=\"2.0\"]),\r",
-                "    Contents = Source{[Name=\"Contents\"]}[Data],\r",
-                "    Reportes = Contents{[Name=\"Reportes\"]}[Data],\r",
-                "    LIKP_ENTREGAS1 = Reportes{[Name=\"LIKP_ENTREGAS\"]}[Data],\r",
-                "    #\"Added Items\" = Cube.Transform(LIKP_ENTREGAS1,\r",
-                "        {\r",
-                "            {Cube.AddAndExpandDimensionColumn, \"[LIKP_ENTREGAS]\", {\"[ERDAT].[ERDAT].Attribute\", \"[MATKL].[MATKL].Attribute\", \"[MATNR].[MATNR].Attribute\", \"[POSNR].[POSNR].Attribute\", \"[PSTYV].[PSTYV].Attribute\", \"[VBELN].[VBELN].Attribute\", \"[VGBEL].[VGBEL].Attribute\", \"[VGPOS].[VGPOS].Attribute\", \"[VKORG].[VKORG].Attribute\", \"[VSTEL].[VSTEL].Attribute\", \"[WERKS].[WERKS].Attribute\"}, {\"ERDAT\", \"MATKL\", \"MATNR\", \"POSNR\", \"PSTYV\", \"VBELN\", \"VGBEL\", \"VGPOS\", \"VKORG\", \"VSTEL\", \"WERKS\"}},\r",
-                "            {Cube.AddMeasureColumn, \"LFIMG\", \"[Measures].[LFIMG]\"}\r",
-                "        }),\r",
-                "    #\"Filtered Rows\" = Table.SelectRows(#\"Added Items\", each ([VKORG] = \"1000\")),\r",
-                "    #\"Reordered Columns\" = Table.ReorderColumns(#\"Filtered Rows\",{\"VBELN\", \"POSNR\", \"PSTYV\", \"ERDAT\", \"VSTEL\", \"WERKS\", \"MATNR\", \"MATKL\", \"VGBEL\", \"VGPOS\", \"LFIMG\"}),\r",
-                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Reordered Columns\",{{\"ERDAT\", type date}}),\r",
-                "    #\"Inserted Merged Column\" = Table.AddColumn(#\"Changed Type\", \"ID Entrega\", each Text.Combine({[VBELN], [POSNR]}), type text),\r",
-                "    #\"Inserted Merged Column1\" = Table.AddColumn(#\"Inserted Merged Column\", \"ID Pedido Referencia\", each Text.Combine({[VGBEL], [POSNR]}), type text)\r",
-                "in\r",
-                "    #\"Inserted Merged Column1\""
+                "let",
+                "    Source = SapHana.Database(\"172.28.134.165:30215\", [Implementation=\"2.0\"]),",
+                "    Contents = Source{[Name=\"Contents\"]}[Data],",
+                "    Reportes = Contents{[Name=\"Reportes\"]}[Data],",
+                "    LIKP_ENTREGAS1 = Reportes{[Name=\"LIKP_ENTREGAS\"]}[Data],",
+                "    #\"Added Items\" = Cube.Transform(LIKP_ENTREGAS1,",
+                "        {",
+                "            {Cube.AddAndExpandDimensionColumn, \"[LIKP_ENTREGAS]\", {\"[ERDAT].[ERDAT].Attribute\", \"[MATKL].[MATKL].Attribute\", \"[MATNR].[MATNR].Attribute\", \"[POSNR].[POSNR].Attribute\", \"[PSTYV].[PSTYV].Attribute\", \"[VBELN].[VBELN].Attribute\", \"[VGBEL].[VGBEL].Attribute\", \"[VGPOS].[VGPOS].Attribute\", \"[VKORG].[VKORG].Attribute\", \"[VSTEL].[VSTEL].Attribute\", \"[WERKS].[WERKS].Attribute\"}, {\"ERDAT\", \"MATKL\", \"MATNR\", \"POSNR\", \"PSTYV\", \"VBELN\", \"VGBEL\", \"VGPOS\", \"VKORG\", \"VSTEL\", \"WERKS\"}},",
+                "            {Cube.AddMeasureColumn, \"LFIMG\", \"[Measures].[LFIMG]\"}",
+                "        }),",
+                "    #\"Filtered Rows\" = Table.SelectRows(#\"Added Items\", each ([VKORG] = \"1000\")),",
+                "    #\"Reordered Columns\" = Table.ReorderColumns(#\"Filtered Rows\",{\"VBELN\", \"POSNR\", \"PSTYV\", \"ERDAT\", \"VSTEL\", \"WERKS\", \"MATNR\", \"MATKL\", \"VGBEL\", \"VGPOS\", \"LFIMG\"}),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Reordered Columns\",{{\"ERDAT\", type date}}),",
+                "    #\"Inserted Merged Column\" = Table.AddColumn(#\"Changed Type\", \"ID Entrega\", each Text.Combine({[VBELN], [POSNR]}), type text),",
+                "    #\"Inserted Merged Column1\" = Table.AddColumn(#\"Inserted Merged Column\", \"ID Pedido Referencia\", each Text.Combine({[VGBEL], [POSNR]}), type text),",
+                "    #\"Renamed Columns\" = Table.RenameColumns(#\"Inserted Merged Column1\",{{\"MATNR\", \"Codigo Item\"}, {\"MATKL\", \"Codigo Grupo\"}, {\"ERDAT\", \"Fecha Creacion\"}, {\"LFIMG\", \"Cantidad Entregada\"}, {\"VBELN\", \"Num Entrega\"}, {\"POSNR\", \"Pos Entrega\"}, {\"VGBEL\", \"Pedido Referencia\"}, {\"VGPOS\", \"Pedido Posicion\"}, {\"VKORG\", \"Organizacion\"}, {\"VSTEL\", \"Oficina de Venta\"}, {\"WERKS\", \"Centro\"}})",
+                "in",
+                "    #\"Renamed Columns\""
               ],
               "type": "m"
             }
@@ -1987,7 +1989,7 @@
             "name": "LocalDateTable_3f407d40-36cc-450a-aaf1-5865b55e1806",
             "mode": "import",
             "source": {
-              "expression": "Calendar(Date(Year(MIN('LIKP_ENTREGAS'[ERDAT])), 1, 1), Date(Year(MAX('LIKP_ENTREGAS'[ERDAT])), 12, 31))",
+              "expression": "Calendar(Date(Year(MIN('LIKP_ENTREGAS'[Fecha Creacion])), 1, 1), Date(Year(MAX('LIKP_ENTREGAS'[Fecha Creacion])), 12, 31))",
               "type": "calculated"
             }
           }
