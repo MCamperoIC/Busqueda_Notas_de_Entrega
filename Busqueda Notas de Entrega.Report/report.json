@@ -1,0 +1,60 @@
+{
+  "config": "{\"version\":\"5.59\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY24SU10\",\"version\":\"5.60\",\"type\":2}},\"activeSectionIndex\":0,\"defaultDrillFilterOtherVisuals\":true,\"linguisticSchemaSyncVersion\":2,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true,\"useEnhancedTooltips\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}]}}",
+  "layoutOptimization": 0,
+  "resourcePackages": [
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "name": "CY24SU10",
+            "path": "BaseThemes/CY24SU10.json",
+            "type": 202
+          }
+        ],
+        "name": "SharedResources",
+        "type": 2
+      }
+    }
+  ],
+  "sections": [
+    {
+      "config": "{}",
+      "displayName": "Page 1",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "0ba2a0de803163690590",
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"17d2146ea9d897773b34\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":15.060940659911102,\"z\":0,\"width\":969.2158283495733,\"height\":319.8235046016416}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"FACTURAS_CONTABLES.XBLNR\"},{\"queryRef\":\"VBRKP_FILTRADO.Documento Contable\"},{\"queryRef\":\"VBRKP_FILTRADO.Fecha\"},{\"queryRef\":\"VBRKP_FILTRADO.AUBEL\"},{\"queryRef\":\"Sum(VBRKP_FILTRADO.Monto en BOB)\"},{\"queryRef\":\"FACTURAS_CONTABLES.NIT_Dest_Factura\"},{\"queryRef\":\"FACTURAS_CONTABLES.Nombre_Dest_factura\"},{\"queryRef\":\"VBRKP_FILTRADO.Documento Venta\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"FACTURAS_CONTABLES\",\"Type\":0},{\"Name\":\"v\",\"Entity\":\"VBRKP_FILTRADO\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Factura Fiscal\"},\"Name\":\"FACTURAS_CONTABLES.XBLNR\",\"NativeReferenceName\":\"Factura Fiscal\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"v\"}},\"Property\":\"Documento Contable\"},\"Name\":\"VBRKP_FILTRADO.Documento Contable\",\"NativeReferenceName\":\"Documento Contable\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"v\"}},\"Property\":\"Fecha Venta\"},\"Name\":\"VBRKP_FILTRADO.Fecha\",\"NativeReferenceName\":\"Fecha Venta\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"v\"}},\"Property\":\"AUBEL\"},\"Name\":\"VBRKP_FILTRADO.AUBEL\",\"NativeReferenceName\":\"AUBEL\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"v\"}},\"Property\":\"Monto en BOB\"}},\"Function\":0},\"Name\":\"Sum(VBRKP_FILTRADO.Monto en BOB)\",\"NativeReferenceName\":\"Sum of Monto en BOB\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"NIT_Dest_Factura\"},\"Name\":\"FACTURAS_CONTABLES.NIT_Dest_Factura\",\"NativeReferenceName\":\"NIT_Dest_Factura\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Nombre_Dest_factura\"},\"Name\":\"FACTURAS_CONTABLES.Nombre_Dest_factura\",\"NativeReferenceName\":\"Nombre_Dest_factura\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"v\"}},\"Property\":\"Documento Venta\"},\"Name\":\"VBRKP_FILTRADO.Documento Venta\",\"NativeReferenceName\":\"Documento Venta\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"v\"}},\"Property\":\"Fecha Venta\"}}}]},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 319.82,
+          "width": 969.22,
+          "x": 0.00,
+          "y": 15.06,
+          "z": 0.00
+        },
+        {
+          "config": "{\"name\":\"5f0108c802c0d356d0dc\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":429.23680880746645,\"width\":969.2158283495733,\"height\":290.76319119253355,\"z\":2000}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"LIKP_ENTREGAS.VBELN\"},{\"queryRef\":\"LIKP_ENTREGAS.VGBEL\"},{\"queryRef\":\"Sum(LIKP_ENTREGAS.LFIMG)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"l\",\"Entity\":\"LIKP_ENTREGAS\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"l\"}},\"Property\":\"VGBEL\"},\"Name\":\"LIKP_ENTREGAS.VGBEL\",\"NativeReferenceName\":\"VGBEL\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"l\"}},\"Property\":\"VBELN\"},\"Name\":\"LIKP_ENTREGAS.VBELN\",\"NativeReferenceName\":\"VBELN\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"l\"}},\"Property\":\"LFIMG\"}},\"Function\":0},\"Name\":\"Sum(LIKP_ENTREGAS.LFIMG)\",\"NativeReferenceName\":\"Sum of LFIMG\"}]},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 290.76,
+          "width": 969.22,
+          "x": 0.00,
+          "y": 429.24,
+          "z": 2000.00
+        },
+        {
+          "config": "{\"name\":\"d093fa739802c567e604\",\"layouts\":[{\"id\":0,\"position\":{\"x\":1036.5470924762346,\"y\":7.087501487016989,\"z\":1000,\"width\":243.632863616209,\"height\":402.2157093882141}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"FACTURAS_CONTABLES.Factura Fiscal\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"FACTURAS_CONTABLES\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Factura Fiscal\"},\"Name\":\"FACTURAS_CONTABLES.Factura Fiscal\",\"NativeReferenceName\":\"Factura Fiscal\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Basic'\"}}}}}],\"general\":[{\"properties\":{\"selfFilterEnabled\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"selfFilter\":{\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"FACTURAS_CONTABLES\",\"Type\":0}],\"Where\":[{\"Condition\":{\"Contains\":{\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Factura Fiscal\"}},\"Right\":{\"Literal\":{\"Value\":\"'21981'\"}}}},\"Annotations\":{\"PowerBI.MParameterBehavior\":1}}]}},\"filter\":{\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"FACTURAS_CONTABLES\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Factura Fiscal\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"'0000021981'\"}}]]}}}]}}}}]}}}",
+          "filters": "[]",
+          "height": 402.22,
+          "width": 243.63,
+          "x": 1036.55,
+          "y": 7.09,
+          "z": 1000.00
+        }
+      ],
+      "width": 1280.00
+    }
+  ]
+}

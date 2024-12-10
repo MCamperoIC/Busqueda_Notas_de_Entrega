@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Busqueda Notas de Entrega"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "8bda3e18-1b14-4751-b15b-acce56105d79"
+  }
+}
